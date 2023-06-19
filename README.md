@@ -1,5 +1,55 @@
-Image segmentation is a critical task in computer vision that involves dividing an image into multiple segments or regions. YOLOv8 is a state-of-the-art deep learning model that can be used for image segmentation and object detection. In this web app, we will implement an interesting example using YOLOv8 for image segmentation. We can simply drop an image, View the identified segment a piece, a whole and the distribution of the identified segments. The essence of this application is to build a practical understanding and implementation of the powerful and light YOLOv8 for image segmentation and object detection
+# Image Segmentation with YOLOv8
 
-Wrote all about the process in this [Blog](https://dev.to/afrologicinsect/deploying-an-image-segmentation-web-application-with-yolov8-and-streamlit-pt1-24g0)
+This repository demonstrates the use of [YOLOv8](https://github.com/ultralytics/ultralytics), a state-of-the-art deep learning model, for image segmentation and object detection. The project includes a web application that allows users to upload an image and view the identified segments, providing a practical understanding of YOLOv8's capabilities in image segmentation.
 
-[Web Application](https://img-segmentation.streamlit.app/)
+## Features
+
+- **Image Segmentation**: Utilizes YOLOv8 to segment images into distinct regions.
+- **Object Detection**: Identifies and classifies objects within an image.
+- **Web Application**: Interactive interface for uploading images and visualizing segmentation results.
+
+## Requirements
+
+Ensure you have the following dependencies installed:
+
+- Python 3.8 or higher
+- PyTorch
+- OpenCV
+- Streamlit
+- Ultralytics YOLOv8
+
+Install the required packages using:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone https://github.com/aleale2121/Image-Segmentation-YOLOv8.git
+   cd Image-Segmentation-YOLOv8
+   ```
+
+2. **Download YOLOv8 Model Weights**:
+
+   Ensure you have the YOLOv8 model weights file (`yolov8n.pt`) in the repository directory. You can download it from the [Ultralytics YOLOv8 repository](https://github.com/ultralytics/ultralytics).
+
+3. **Run the Web Application**:
+
+   The web application is built using Streamlit. To start the app, execute:
+
+   ```bash
+   streamlit run segmentation.py
+   ```
+
+   This will launch the application in your default web browser.
+
+4. **Upload and Segment Images**:
+
+   You can upload an image using the web interface. The application will process the image using YOLOv8 and display the segmented output.
+
+
+*Note: Ensure the `yolov8n.pt` file is in the repository directory before running the application. If it's not included due to file size constraints, download it from the official Ultralytics repository.*
