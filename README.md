@@ -5,6 +5,9 @@ Sumber dataset: https://www.kaggle.com/datasets/dansbecker/cityscapes-image-pair
 
 Team:
 Armanda Tantra Kumara - 120450037
+
 Hanna Septiani - 120450064
+
 Siti Nur AziZAH - 120450063
+
 Taufiqurahman Syah Effendi - 120450052
