@@ -3,7 +3,7 @@ Project ini merupakan segmentasi gambar menggunakan VGG19 dengan teknik yang kua
 
 Sumber dataset: https://www.kaggle.com/datasets/dansbecker/cityscapes-image-pairs
 
-Team:
+Team 8 Deep Learning RA:
 
 Armanda Tantra Kumara - 120450037
 
