@@ -4,6 +4,7 @@ Project pengenalan gambar dan analisis pemandangan kota merupakan topik penting 
 Sumber dataset: https://www.kaggle.com/datasets/dansbecker/cityscapes-image-pairs
 
 Team:
+
 Armanda Tantra Kumara - 120450037
 
 Hanna Septiani - 120450064
