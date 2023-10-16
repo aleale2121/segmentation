@@ -9,6 +9,6 @@ Armanda Tantra Kumara - 120450037
 
 Hanna Septiani - 120450064
 
-Siti Nur AziZAH - 120450063
+Siti Nur Azizah - 120450063
 
 Taufiqurahman Syah Effendi - 120450052
