@@ -5,6 +5,7 @@ import seaborn as sns
 import time
 from sklearn.metrics import accuracy_score
 from io import BytesIO
+import requests
 
 # Function to give color to segmented images
 def give_color_to_seg_img(seg, n_classes=13):
