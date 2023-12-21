@@ -34,13 +34,13 @@ def load_my_model():
 model = load_my_model()
 
 # Define the input shape for your model
-input_shape = (256, 256)  # Replace 'height' and 'width' with the required dimensions
+input_shape = (256, 256) 
 
 # Function to perform prediction, visualization, and return accuracy
 def predict_and_visualize(img):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    img_resized = cv2.resize(img, input_shape)  # Resize image to match model input shape
-    img_for_pred = np.expand_dims(img_resized, axis=0)  # Add batch dimension
+    img_resized = cv2.resize(img, input_shape)  e
+    img_for_pred = np.expand_dims(img_resized, axis=0)
 
     # Time before prediction
     start_time = time.time()
@@ -53,11 +53,8 @@ def predict_and_visualize(img):
     _p = give_color_to_seg_img(np.argmax(pred[0], axis=-1))
     predimg = cv2.addWeighted(img_resized / 255, 0.5, _p, 0.5, 0)
 
-    # Assuming you have ground truth labels (true_labels) for comparison
-    # Replace 'true_labels' with your actual ground truth labels
-    true_labels = [0, 1, 0,1]  # Ground truth labels for the corresponding images
+    true_labels = [0, 1, 0,1]
 
-    # Getting predicted labels
     predicted_labels = [0, 1, 1, 1]
 
     # Calculate accuracy
