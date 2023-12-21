@@ -1,12 +1,16 @@
 import streamlit as st
 import cv2
 import numpy as np
+from tensorflow.keras.models import load_model
 import seaborn as sns
 import time
 from sklearn.metrics import accuracy_score
-from io import BytesIO
-import requests
-from fastai.text.all import *
+import gdown
+
+# a file
+url = "https://drive.google.com/uc?id=1V4SHbFC5PV5myXW1UPEu_bQOWGKh2pbM"
+output = "VGG19_BAIK.h5"
+gdown.download(url, output, quiet=False)
 
 # Function to give color to segmented images
 def give_color_to_seg_img(seg, n_classes=13):
@@ -22,15 +26,12 @@ def give_color_to_seg_img(seg, n_classes=13):
 
     return(seg_img)
 
-# download model from Dropbox, cache it and load the model into the app
+# Load the model
 @st.cache(allow_output_mutation=True)
-def load_model(url):
-    modelLink = url
-    model = requests.get(modelLink).content
-    return model
-modelFile = load_model("https://dl.dropboxusercontent.com/scl/fi/73892qrzamdneefs6l49u/VGG19_BAIK.h5?rlkey=9rzj6afci18fmh6l4afg5esew&dl=0")
-model = BytesIO(modelFile)
-learn_inf = load_learner(model)
+def load_my_model():
+    return load_model('VGG19_BAIK.h5')
+
+model = load_my_model()
 
 # Define the input shape for your model
 input_shape = (256, 256)  # Replace 'height' and 'width' with the required dimensions
@@ -44,7 +45,7 @@ def predict_and_visualize(img):
     # Time before prediction
     start_time = time.time()
 
-    pred = learn_inf.predict(img_for_pred)
+    pred = model.predict(img_for_pred)
 
     # Time after prediction
     end_time = time.time()
