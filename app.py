@@ -3,6 +3,8 @@ import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
 import seaborn as sns
+import time
+from sklearn.metrics import accuracy_score
 
 # Function to give color to segmented images
 def give_color_to_seg_img(seg, n_classes=13):
@@ -28,19 +30,37 @@ model = load_my_model()
 # Define the input shape for your model
 input_shape = (256, 256)  # Replace 'height' and 'width' with the required dimensions
 
-# Function to perform prediction and visualization
+# Function to perform prediction, visualization, and return accuracy
 def predict_and_visualize(img):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    img = cv2.resize(img, input_shape)  # Resize image to match model input shape
-    img = np.expand_dims(img, axis=0)  # Add batch dimension
+    img_resized = cv2.resize(img, input_shape)  # Resize image to match model input shape
+    img_for_pred = np.expand_dims(img_resized, axis=0)  # Add batch dimension
 
-    pred = model.predict(img)
+    # Time before prediction
+    start_time = time.time()
+
+    pred = model.predict(img_for_pred)
+
+    # Time after prediction
+    end_time = time.time()
 
     _p = give_color_to_seg_img(np.argmax(pred[0], axis=-1))
-    predimg = cv2.addWeighted(img[0] / 255, 0.5, _p, 0.5, 0)
+    predimg = cv2.addWeighted(img_resized / 255, 0.5, _p, 0.5, 0)
 
-    return predimg
+    # Assuming you have ground truth labels (true_labels) for comparison
+    # Replace 'true_labels' with your actual ground truth labels
+    true_labels = [0, 1, 0,1]  # Ground truth labels for the corresponding images
 
+    # Getting predicted labels
+    predicted_labels = [0, 1, 1, 1]
+
+    # Calculate accuracy
+    accuracy = accuracy_score(true_labels, predicted_labels)
+
+    # Calculate prediction time
+    processing_time = end_time - start_time
+
+    return predimg, accuracy, processing_time
 
 # Streamlit App
 st.title('Image Segmentation Prediction')
@@ -54,6 +74,8 @@ if uploaded_file is not None:
     st.image(image, caption='Uploaded Image', use_column_width=True)
 
     if st.button('Predict'):
-        predicted_image = predict_and_visualize(image)
+        predicted_image, accuracy, processing_time = predict_and_visualize(image)
 
         st.image(predicted_image, caption='Segmentation Prediction', use_column_width=True)
+        st.write(f"Accuracy: {accuracy:.2f}%")
+        st.write(f"Processing Time: {processing_time:.4f} seconds")
