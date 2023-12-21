@@ -194,11 +194,9 @@ def fcn(vgg, classes=13, fcn8=False):
     add_2 = Add()([deconv_8, conv_9])
     deconv_9 = Conv2DTranspose(classes, kernel_size=(8, 8), strides=(8, 8))(add_2)
 
-    # Jika menggunakan fcn16, sesuaikan logika di sini
     if fcn8:
         output_layer = Activation('softmax')(deconv_9)
     else:
-        # Jika tidak menggunakan fcn16, mungkin ada logika lain di sini
         output_layer = Activation('softmax')(deconv_8)
 
     model = Model(inputs=vgg.input, outputs=output_layer)
