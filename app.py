@@ -28,7 +28,7 @@ def load_model(url):
     modelLink = url
     model = requests.get(modelLink).content
     return model
-modelFile = load_model("https://bit.ly/modelarman")
+modelFile = load_model("https://dl.dropboxusercontent.com/scl/fi/73892qrzamdneefs6l49u/VGG19_BAIK.h5?rlkey=9rzj6afci18fmh6l4afg5esew&dl=0")
 model = BytesIO(modelFile)
 learn_inf = load_learner(model)
 
