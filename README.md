@@ -101,10 +101,6 @@ Image-Segmentation-VGG19/
 - [VGG19 Architecture](https://arxiv.org/abs/1409.1556)
 - [Keras Applications](https://keras.io/api/applications/)
 
-## Author
-
-Developed by **Aleale2121**. Please feel free to reach out if you have any questions or feedback.
-
 ---
 
 *Note: Ensure the dataset is properly prepared, and the paths are correctly set in the scripts before running the training or prediction processes.*
